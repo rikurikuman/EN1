@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public Camera cameraObj;
-    public float power;
+    public float power = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,23 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Rigidbody>().AddForce(new Vector3());
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(-1, 0, 0) * power);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(1, 0, 0) * power);
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1) * power);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -1) * power);
+        }
+
 
         Vector3 vec = new Vector3(0, 20, -20);
         Vector3 pos = this.gameObject.transform.position;
