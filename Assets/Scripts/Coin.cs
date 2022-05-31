@@ -22,6 +22,7 @@ public class Coin : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            SoundManager.Play("Coin");
             StageManager.coin++;
             Destroy(gameObject);
         }

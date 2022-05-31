@@ -6,9 +6,8 @@ public class PlayerScript : MonoBehaviour
 {
     public Camera cameraObj;
     public float power = 10;
-    public AudioSource audioSource;
-    public AudioClip goalSE;
     public StageManager manager;
+    public ParticleSystem particle;
 
     // Start is called before the first frame update
     void Start()
@@ -36,19 +35,32 @@ public class PlayerScript : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -1) * power);
         }
 
-        Vector3 vec = new Vector3(0, 20, -20);
+        Vector3 vec = new Vector3(0, 30, -5);
         Vector3 pos = gameObject.transform.position;
         pos += vec;
-        cameraObj.transform.SetPositionAndRotation(pos, Quaternion.Euler(45, 0, 0));
+        cameraObj.transform.SetPositionAndRotation(pos, Quaternion.LookRotation(transform.position - pos));
+
+        if(transform.position.y <= -50)
+        {
+            SoundManager.Play("Explode");
+            Instantiate(particle, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            SoundManager.Play("Explode");
+            Instantiate(particle, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Goal")
         {
-            audioSource.Pause();
-            audioSource.PlayOneShot(goalSE);
-            Debug.Log("ƒS[ƒ‹I");
             manager.ClearStage();
         }
     }

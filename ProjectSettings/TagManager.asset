@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Goal
   - Coin
+  - Cannon
+  - Bullet
   layers:
   - Default
   - TransparentFX
