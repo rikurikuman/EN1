@@ -15,6 +15,7 @@ public class StageManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         coin = 0;
     }
 
