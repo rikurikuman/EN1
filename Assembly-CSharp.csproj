@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />
     <Compile Include="Assets\Scripts\StageManager.cs" />
+    <Compile Include="Assets\Scripts\TitleManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

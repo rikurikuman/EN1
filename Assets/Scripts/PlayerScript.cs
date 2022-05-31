@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
     public float power = 10;
     public AudioSource audioSource;
     public AudioClip goalSE;
+    public StageManager manager;
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         Vector3 vec = new Vector3(0, 20, -20);
-        Vector3 pos = this.gameObject.transform.position;
+        Vector3 pos = gameObject.transform.position;
         pos += vec;
         cameraObj.transform.SetPositionAndRotation(pos, Quaternion.Euler(45, 0, 0));
     }
@@ -48,6 +49,7 @@ public class PlayerScript : MonoBehaviour
             audioSource.Pause();
             audioSource.PlayOneShot(goalSE);
             Debug.Log("ÉSÅ[ÉãÅI");
+            manager.ClearStage();
         }
     }
 }
