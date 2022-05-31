@@ -22,6 +22,7 @@ public class Coin : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            StageManager.coin++;
             Destroy(gameObject);
         }
     }

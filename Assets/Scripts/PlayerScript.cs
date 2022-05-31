@@ -18,19 +18,19 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if(Input.GetKey(KeyCode.A))
         {
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(-1, 0, 0) * power);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(1, 0, 0) * power);
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W))
         {
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, 1) * power);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S))
         {
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, -1) * power);
         }
@@ -47,7 +47,6 @@ public class PlayerScript : MonoBehaviour
         {
             audioSource.Pause();
             audioSource.PlayOneShot(goalSE);
-            this.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 1000, 0));
             Debug.Log("ÉSÅ[ÉãÅI");
         }
     }
